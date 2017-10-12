@@ -666,6 +666,9 @@ static int kDragCenterContext;
         // Move to user location only for the first time it loads up.
         // mapView.followUserLocation = NO;
     }
+    
+    MKAnnotationView* annotationView = [mapView viewForAnnotation:location];
+    annotationView.canShowCallout = NO;
 }
 
 - (void)mapView:(AIRMap *)mapView regionWillChangeAnimated:(__unused BOOL)animated
