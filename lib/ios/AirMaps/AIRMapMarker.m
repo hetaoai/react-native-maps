@@ -139,7 +139,7 @@
 {
     MKAnnotationView *annotationView = [self getAnnotationView];
 
-    [self setSelected:YES animated:NO];
+    //[self setSelected:YES animated:NO];
 
     id event = @{
             @"action": @"marker-select",
