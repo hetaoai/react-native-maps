@@ -93,45 +93,45 @@ public class AirMapModule extends ReactContextBaseJavaModule {
           promise.reject("AirMapView.map is not valid");
           return;
         }
-        view.map.snapshot(new GoogleMap.SnapshotReadyCallback() {
-          public void onSnapshotReady(@Nullable Bitmap snapshot) {
-
-            // Convert image to requested width/height if necessary
-            if (snapshot == null) {
-              promise.reject("Failed to generate bitmap, snapshot = null");
-              return;
-            }
-            if ((width != 0) && (height != 0) &&
-                (width != snapshot.getWidth() || height != snapshot.getHeight())) {
-              snapshot = Bitmap.createScaledBitmap(snapshot, width, height, true);
-            }
-
-            // Save the snapshot to disk
-            if (result.equals(SNAPSHOT_RESULT_FILE)) {
-              File tempFile;
-              FileOutputStream outputStream;
-              try {
-                tempFile =
-                    File.createTempFile("AirMapSnapshot", "." + format, context.getCacheDir());
-                outputStream = new FileOutputStream(tempFile);
-              } catch (Exception e) {
-                promise.reject(e);
-                return;
-              }
-              snapshot.compress(compressFormat, (int) (100.0 * quality), outputStream);
-              closeQuietly(outputStream);
-              String uri = Uri.fromFile(tempFile).toString();
-              promise.resolve(uri);
-            } else if (result.equals(SNAPSHOT_RESULT_BASE64)) {
-              ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-              snapshot.compress(compressFormat, (int) (100.0 * quality), outputStream);
-              closeQuietly(outputStream);
-              byte[] bytes = outputStream.toByteArray();
-              String data = Base64.encodeToString(bytes, Base64.NO_WRAP);
-              promise.resolve(data);
-            }
-          }
-        });
+//        view.map.snapshot(new GoogleMap.SnapshotReadyCallback() {
+//          public void onSnapshotReady(@Nullable Bitmap snapshot) {
+//
+//            // Convert image to requested width/height if necessary
+//            if (snapshot == null) {
+//              promise.reject("Failed to generate bitmap, snapshot = null");
+//              return;
+//            }
+//            if ((width != 0) && (height != 0) &&
+//                (width != snapshot.getWidth() || height != snapshot.getHeight())) {
+//              snapshot = Bitmap.createScaledBitmap(snapshot, width, height, true);
+//            }
+//
+//            // Save the snapshot to disk
+//            if (result.equals(SNAPSHOT_RESULT_FILE)) {
+//              File tempFile;
+//              FileOutputStream outputStream;
+//              try {
+//                tempFile =
+//                    File.createTempFile("AirMapSnapshot", "." + format, context.getCacheDir());
+//                outputStream = new FileOutputStream(tempFile);
+//              } catch (Exception e) {
+//                promise.reject(e);
+//                return;
+//              }
+//              snapshot.compress(compressFormat, (int) (100.0 * quality), outputStream);
+//              closeQuietly(outputStream);
+//              String uri = Uri.fromFile(tempFile).toString();
+//              promise.resolve(uri);
+//            } else if (result.equals(SNAPSHOT_RESULT_BASE64)) {
+//              ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//              snapshot.compress(compressFormat, (int) (100.0 * quality), outputStream);
+//              closeQuietly(outputStream);
+//              byte[] bytes = outputStream.toByteArray();
+//              String data = Base64.encodeToString(bytes, Base64.NO_WRAP);
+//              promise.resolve(data);
+//            }
+//          }
+//        });
       }
     });
   }

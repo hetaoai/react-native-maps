@@ -14,11 +14,10 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.LatLngBounds;
+
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MapStyleOptions;
 
 import java.util.Map;
 
@@ -47,11 +46,11 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   private final ReactApplicationContext appContext;
 
-  protected GoogleMapOptions googleMapOptions;
+
 
   public AirMapManager(ReactApplicationContext context) {
     this.appContext = context;
-    this.googleMapOptions = new GoogleMapOptions();
+
   }
 
   @Override
@@ -61,7 +60,7 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @Override
   protected AirMapView createViewInstance(ThemedReactContext context) {
-    return new AirMapView(context, this.appContext, this, googleMapOptions);
+    return new AirMapView(context, this.appContext, this);
   }
 
   private void emitMapError(ThemedReactContext context, String message, String type) {
@@ -92,7 +91,7 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @ReactProp(name = "customMapStyleString")
   public void setMapStyle(AirMapView view, @Nullable String customMapStyleString) {
-    view.map.setMapStyle(new MapStyleOptions(customMapStyleString));
+//    view.map.setMapStyle(new MapStyleOptions(customMapStyleString));
   }
 
   @ReactProp(name = "mapPadding")
@@ -121,7 +120,7 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
       }
     }
 
-    view.map.setPadding(left, top, right, bottom);
+//    view.map.setPadding(left, top, right, bottom);
   }
 
   @ReactProp(name = "showsUserLocation", defaultBoolean = false)
@@ -153,17 +152,17 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @ReactProp(name = "showsBuildings", defaultBoolean = false)
   public void setShowBuildings(AirMapView view, boolean showBuildings) {
-    view.map.setBuildingsEnabled(showBuildings);
+//    view.map.setBuildingsEnabled(showBuildings);
   }
 
   @ReactProp(name = "showsIndoors", defaultBoolean = false)
   public void setShowIndoors(AirMapView view, boolean showIndoors) {
-    view.map.setIndoorEnabled(showIndoors);
+//    view.map.setIndoorEnabled(showIndoors);
   }
 
   @ReactProp(name = "showsIndoorLevelPicker", defaultBoolean = false)
   public void setShowsIndoorLevelPicker(AirMapView view, boolean showsIndoorLevelPicker) {
-    view.map.getUiSettings().setIndoorLevelPickerEnabled(showsIndoorLevelPicker);
+//    view.map.getUiSettings().setIndoorLevelPickerEnabled(showsIndoorLevelPicker);
   }
 
   @ReactProp(name = "showsCompass", defaultBoolean = false)
@@ -218,12 +217,12 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @ReactProp(name = "minZoomLevel")
   public void setMinZoomLevel(AirMapView view, float minZoomLevel) {
-    view.map.setMinZoomPreference(minZoomLevel);
+//    view.map.setMinZoomPreference(minZoomLevel);
   }
 
   @ReactProp(name = "maxZoomLevel")
   public void setMaxZoomLevel(AirMapView view, float maxZoomLevel) {
-    view.map.setMaxZoomPreference(maxZoomLevel);
+//    view.map.setMaxZoomPreference(maxZoomLevel);
   }
 
   @Override

@@ -1,19 +1,18 @@
 package com.airbnb.android.react.maps;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
+import com.amap.api.maps.model.LatLngBounds;
 
 public class LatLngBoundsUtils {
   public static boolean BoundsAreDifferent(LatLngBounds a, LatLngBounds b) {
-    LatLng centerA = a.getCenter();
-    double latA = centerA.latitude;
-    double lngA = centerA.longitude;
+
+
+    double latA = (a.northeast.latitude + a.southwest.latitude) / 2;
+    double lngA = (a.northeast.longitude + a.southwest.longitude) / 2;
     double latDeltaA = a.northeast.latitude - a.southwest.latitude;
     double lngDeltaA = a.northeast.longitude - a.southwest.longitude;
 
-    LatLng centerB = b.getCenter();
-    double latB = centerB.latitude;
-    double lngB = centerB.longitude;
+    double latB = (b.northeast.latitude + b.southwest.latitude) / 2;
+    double lngB = (b.northeast.longitude + b.southwest.longitude) / 2;
     double latDeltaB = b.northeast.latitude - b.southwest.latitude;
     double lngDeltaB = b.northeast.longitude - b.southwest.longitude;
 

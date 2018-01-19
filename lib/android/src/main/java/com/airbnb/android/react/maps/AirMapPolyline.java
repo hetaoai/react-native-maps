@@ -4,10 +4,10 @@ import android.content.Context;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Polyline;
+import com.amap.api.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,13 +90,13 @@ public class AirMapPolyline extends AirMapFeature {
   }
 
   @Override
-  public void addToMap(GoogleMap map) {
+  public void addToMap(AMap map) {
     polyline = map.addPolyline(getPolylineOptions());
-    polyline.setClickable(true);
+//    polyline.setClickable(true);
   }
 
   @Override
-  public void removeFromMap(GoogleMap map) {
+  public void removeFromMap(AMap map) {
     polyline.remove();
   }
 }

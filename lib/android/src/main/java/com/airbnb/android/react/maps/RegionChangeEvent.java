@@ -4,8 +4,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.uimanager.events.Event;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
+import com.amap.api.maps.model.LatLngBounds;
 
 public class RegionChangeEvent extends Event<RegionChangeEvent> {
   private final LatLngBounds bounds;
@@ -34,9 +33,11 @@ public class RegionChangeEvent extends Event<RegionChangeEvent> {
     event.putBoolean("continuous", continuous);
 
     WritableMap region = new WritableNativeMap();
-    LatLng center = bounds.getCenter();
-    region.putDouble("latitude", center.latitude);
-    region.putDouble("longitude", center.longitude);
+
+    double latitude = (bounds.northeast.latitude + bounds.southwest.latitude) / 2;
+    double longitude = (bounds.northeast.longitude + bounds.southwest.longitude) / 2;
+    region.putDouble("latitude", latitude);
+    region.putDouble("longitude", longitude);
     region.putDouble("latitudeDelta", bounds.northeast.latitude - bounds.southwest.latitude);
     region.putDouble("longitudeDelta", bounds.northeast.longitude - bounds.southwest.longitude);
     event.putMap("region", region);
