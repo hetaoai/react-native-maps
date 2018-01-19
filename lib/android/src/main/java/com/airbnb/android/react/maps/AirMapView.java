@@ -126,6 +126,7 @@ public class AirMapView extends TextureMapView {
     super(getNonBuggyContext(reactContext, appContext));
 
     this.map = getMap();
+    this.map.getUiSettings().setScaleControlsEnabled(false);
     this.manager = manager;
     this.context = reactContext;
 

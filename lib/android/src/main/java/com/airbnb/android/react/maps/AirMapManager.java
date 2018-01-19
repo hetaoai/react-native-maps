@@ -216,12 +216,12 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @ReactProp(name = "minZoomLevel")
   public void setMinZoomLevel(AirMapView view, float minZoomLevel) {
-//    view.map.setMinZoomPreference(minZoomLevel);
+    view.map.setMinZoomLevel(minZoomLevel);
   }
 
   @ReactProp(name = "maxZoomLevel")
   public void setMaxZoomLevel(AirMapView view, float maxZoomLevel) {
-//    view.map.setMaxZoomPreference(maxZoomLevel);
+    view.map.setMaxZoomLevel(maxZoomLevel);
   }
 
   @Override
