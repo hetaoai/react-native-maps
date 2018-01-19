@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.amap.api.maps.model.MyLocationStyle;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
@@ -127,6 +128,11 @@ public class AirMapView extends TextureMapView {
 
     this.map = getMap();
     this.map.getUiSettings().setScaleControlsEnabled(false);
+    MyLocationStyle locationStyle = new MyLocationStyle()
+        .myLocationType(MyLocationStyle.LOCATION_TYPE_SHOW)
+        .radiusFillColor(Color.argb(115,110,170,220))
+        .strokeColor(Color.TRANSPARENT);
+    this.map.setMyLocationStyle(locationStyle);
     this.manager = manager;
     this.context = reactContext;
 
