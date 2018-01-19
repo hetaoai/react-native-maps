@@ -79,7 +79,7 @@ public class AirMapView extends TextureMapView {
   private final List<AirMapFeature> features = new ArrayList<>();
   private final Map<Marker, AirMapMarker> markerMap = new HashMap<>();
   private final Map<Polyline, AirMapPolyline> polylineMap = new HashMap<>();
-//  private final Map<Polygon, AirMapPolygon> polygonMap = new HashMap<>();
+  //  private final Map<Polygon, AirMapPolygon> polygonMap = new HashMap<>();
   private final GestureDetectorCompat gestureDetector;
   private final AirMapManager manager;
   private LifecycleEventListener lifecycleListener;
@@ -214,7 +214,6 @@ public class AirMapView extends TextureMapView {
       }
     });
 
-    manager.pushEvent(context, this, "onMapReady", new WritableNativeMap());
 
     final AirMapView view = this;
 
@@ -357,6 +356,7 @@ public class AirMapView extends TextureMapView {
       @Override
       public void onMapLoaded() {
         isMapLoaded = true;
+        manager.pushEvent(context, AirMapView.this, "onMapReady", new WritableNativeMap());
 //        AirMapView.this.cacheView();
       }
     });
