@@ -17,7 +17,6 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
 
-import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Map;
 
@@ -36,13 +35,13 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
   private static final int SET_MAP_BOUNDARIES = 8;
 
 
-  private final Map<String, Integer> MAP_TYPES = MapBuilder.of(
-      "standard", GoogleMap.MAP_TYPE_NORMAL,
-      "satellite", GoogleMap.MAP_TYPE_SATELLITE,
-      "hybrid", GoogleMap.MAP_TYPE_HYBRID,
-      "terrain", GoogleMap.MAP_TYPE_TERRAIN,
-      "none", GoogleMap.MAP_TYPE_NONE
-  );
+//  private final Map<String, Integer> MAP_TYPES = MapBuilder.of(
+//      "standard", GoogleMap.MAP_TYPE_NORMAL,
+//      "satellite", GoogleMap.MAP_TYPE_SATELLITE,
+//      "hybrid", GoogleMap.MAP_TYPE_HYBRID,
+//      "terrain", GoogleMap.MAP_TYPE_TERRAIN,
+//      "none", GoogleMap.MAP_TYPE_NONE
+//  );
 
   private final ReactApplicationContext appContext;
 
@@ -85,8 +84,8 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
   @ReactProp(name = "mapType")
   public void setMapType(AirMapView view, @Nullable String mapType) {
-    int typeId = MAP_TYPES.get(mapType);
-    view.map.setMapType(typeId);
+//    int typeId = MAP_TYPES.get(mapType);
+//    view.map.setMapType(typeId);
   }
 
   @ReactProp(name = "customMapStyleString")

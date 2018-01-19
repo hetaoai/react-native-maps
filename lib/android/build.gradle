@@ -36,6 +36,4 @@ android {
 dependencies {
     provided "com.facebook.react:react-native:+"
     compile "com.amap.api:3dmap:latest.integration"
-    compile "com.google.android.gms:play-services-base:10.2.4"
-    compile "com.google.android.gms:play-services-maps:10.2.4"
 }
