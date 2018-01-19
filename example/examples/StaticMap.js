@@ -11,8 +11,8 @@ import MapView from 'react-native-maps';
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 39.9216594586;
+const LONGITUDE = 116.4012059569359;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 

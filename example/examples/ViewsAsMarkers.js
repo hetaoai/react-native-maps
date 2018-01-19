@@ -12,9 +12,9 @@ import PriceMarker from './PriceMarker';
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE = 39.9316594586;
+const LONGITUDE = 116.4012059569359;
+const LATITUDE_DELTA = 0.05;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ViewsAsMarkers extends React.Component {
