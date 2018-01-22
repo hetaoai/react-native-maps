@@ -127,12 +127,7 @@ public class AirMapView extends TextureMapView {
     super(getNonBuggyContext(reactContext, appContext));
 
     this.map = getMap();
-    this.map.getUiSettings().setScaleControlsEnabled(false);
-    MyLocationStyle locationStyle = new MyLocationStyle()
-        .myLocationType(MyLocationStyle.LOCATION_TYPE_SHOW)
-        .radiusFillColor(Color.argb(115,110,170,220))
-        .strokeColor(Color.TRANSPARENT);
-    this.map.setMyLocationStyle(locationStyle);
+    this.map.getUiSettings().setZoomControlsEnabled(false);
     this.manager = manager;
     this.context = reactContext;
 
@@ -142,18 +137,21 @@ public class AirMapView extends TextureMapView {
 
 //    final AirMapView view = this;
 
-    gestureDetector =
-        new GestureDetectorCompat(reactContext, new GestureDetector.SimpleOnGestureListener() {
-
+    gestureDetector = new GestureDetectorCompat(
+        reactContext,
+        new GestureDetector.SimpleOnGestureListener() {
           @Override
-          public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+          public boolean onScroll(MotionEvent e1,
+              MotionEvent e2,
+              float distanceX,
               float distanceY) {
             if (handlePanDrag) {
               onPanDrag(e2);
             }
             return false;
           }
-        });
+        }
+    );
 
 //    this.addOnLayoutChangeListener(new OnLayoutChangeListener() {
 //      @Override public void onLayoutChange(View v, int left, int top, int right, int bottom,
@@ -383,6 +381,7 @@ public class AirMapView extends TextureMapView {
         if (hasPermissions()) {
           //noinspection MissingPermission
           map.setMyLocationEnabled(showUserLocation);
+          applyMyLocationStyle();
         }
         synchronized (AirMapView.this) {
           if (!destroyed) {
@@ -472,11 +471,20 @@ public class AirMapView extends TextureMapView {
     }
   }
 
+  private void applyMyLocationStyle() {
+    MyLocationStyle locationStyle = new MyLocationStyle()
+        .myLocationType(MyLocationStyle.LOCATION_TYPE_SHOW)
+        .radiusFillColor(Color.TRANSPARENT)
+        .strokeWidth(0);
+    this.map.setMyLocationStyle(locationStyle);
+  }
+
   public void setShowsUserLocation(boolean showUserLocation) {
     this.showUserLocation = showUserLocation; // hold onto this for lifecycle handling
     if (hasPermissions()) {
       //noinspection MissingPermission
       map.setMyLocationEnabled(showUserLocation);
+      applyMyLocationStyle();
     }
   }
 
