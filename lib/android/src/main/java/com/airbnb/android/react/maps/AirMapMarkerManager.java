@@ -21,9 +21,10 @@ public class AirMapMarkerManager extends ViewGroupManager<AirMapMarker> {
 
   private static final int SHOW_INFO_WINDOW = 1;
   private static final int HIDE_INFO_WINDOW = 2;
+  private static final int UPDATE_GRAPHICS = 3;
 
-  public AirMapMarkerManager() {
-  }
+//    public AirMapMarkerManager() {
+//    }
 
   @Override
   public String getName() {
@@ -131,6 +132,7 @@ public class AirMapMarkerManager extends ViewGroupManager<AirMapMarker> {
     view.setOpacity(opacity);
   }
 
+
   @Override
   public void addView(AirMapMarker parent, View child, int index) {
     // if an <Callout /> component is a child, then it is a callout view, NOT part of the
@@ -154,7 +156,8 @@ public class AirMapMarkerManager extends ViewGroupManager<AirMapMarker> {
   public Map<String, Integer> getCommandsMap() {
     return MapBuilder.of(
         "showCallout", SHOW_INFO_WINDOW,
-        "hideCallout", HIDE_INFO_WINDOW
+        "hideCallout", HIDE_INFO_WINDOW,
+        "updateGraphics", UPDATE_GRAPHICS
     );
   }
 
@@ -164,9 +167,11 @@ public class AirMapMarkerManager extends ViewGroupManager<AirMapMarker> {
       case SHOW_INFO_WINDOW:
         ((Marker) view.getFeature()).showInfoWindow();
         break;
-
       case HIDE_INFO_WINDOW:
         ((Marker) view.getFeature()).hideInfoWindow();
+        break;
+      case UPDATE_GRAPHICS:
+        view.update();
         break;
     }
   }
